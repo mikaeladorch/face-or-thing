@@ -2,7 +2,7 @@
 function setup(){
   createCanvas(400, 400);
   angleMode(DEGREES);
-  
+
   mic = new p5.AudioIn();
   mic.start();
 }
@@ -19,7 +19,7 @@ function draw(){
   drawHead();
   drawDashes(85, 225, 65 + mouseX);
   drawDashes(315, 225, -65 + mouseX);
-  
+
 
   console.log("mouse x is: " + mouseX);
   console.log("mouse y is: " + mouseY);
@@ -93,7 +93,7 @@ function drawWings(){
   stroke(158,227,240,170);
   circle(width * 0.375,width * 0.657,width * 0.25);
   pop();
-  
+
 //Right Wing
   push();
   translate(270,160);
@@ -157,7 +157,7 @@ function drawHead(){
   stroke(202,134,236);
   circle(width * 0.5, width * 0.43, width * 0.1);
   pop();
-  //left antenna  
+  //left antenna
   push();
   fill(228,194,245);
   stroke(228,194,245);
@@ -175,7 +175,7 @@ function drawHead(){
   pop();
 }
 
-function drawDashes(xPos, yPos, rotation = mouseX){//dash 
+function drawDashes(xPos, yPos, rotation = mouseX){//dash
   push();
   fill(142,228,175);
   stroke(142,228,175);
