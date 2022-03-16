@@ -1,24 +1,47 @@
+let planet = []
 
 function setup(){
   createCanvas(400, 400);
   angleMode(DEGREES);
 
-  mic = new p5.AudioIn();
-  mic.start();
+ // mic = new p5.AudioIn();
+ // mic.start();
+
+  for (let i = 0; i <= 10; i++){
+    planet[i] = new Planet(random(1,10) * width * 0.1, random (1,10) * height * 0.5, random(360), random(10) * 0.15);
+  }
+
+ // planet[0] = new Planet(width * 0.19, height * -0.05, 5, 1);
+ // planet[1] = new Planet(width * -0.19, height * 0.04, -5, 1);
+  console.log(planet);
+
 }
 
 function draw(){
   background(182,252,213);
   noStroke();
+
+  for (i = 0; i < planet.length - 1; i ++){
+    planet[i].display();
+    planet[i].move();
+  }
+  planet[0].display();
+  planet[1].display();
+
+
+  planet[1].move();
+
   drawCenterPlanet(width * 0.0, height * 0.05, 0);
-  drawPlanet(width * 0.19, height * -0.05, 5);
-  drawPlanet(width * -0.19, height * 0.04, -5);
+ // drawPlanet(width * 0.19, height * -0.05, 5);
+ // drawPlanet(width * -0.19, height * 0.04, -5);
   drawTail();
   drawWings();
   drawBody();
   drawHead();
   drawDashes(85, 225, 65 + mouseX);
   drawDashes(315, 225, -65 + mouseX);
+
+
 
 
   console.log("mouse x is: " + mouseX);
@@ -48,33 +71,6 @@ function drawCenterPlanet(xPos, yPos, rotation){
   fill(64,224,208);
   circle(width * 0.5, width * 0.17, width *0.11);
   fill(228,194,245);
-  ellipse(width * 0.5, width * 0.17, width * 0.2, width * 0.011, width * 0.1);
-  pop();
-}
-
-function drawPlanet(xPos, yPos, rotation){
-  //ViviWest
-  //Cross
-  push();
-  beginShape();
-  translate(xPos, yPos);
-  rotate(rotation)
-  fill(204,145,255)
-  vertex(width * 0.49, height * 0.12);
-  vertex(width * 0.505, height * 0.12);
-  vertex(width * 0.505, height * 0.075);
-  vertex(width * 0.49, height * 0.075);
-  endShape();
-  beginShape();
-  vertex(width * 0.475, height * 0.09);
-  vertex(width * 0.52, height * 0.09);
-  vertex(width * 0.52, height * 0.1);
-  vertex(width * 0.475, height * 0.1);
-  endShape();
-  //Planet
-  fill(64,224,208);
-  circle(width * 0.5, width * 0.17, width *0.11);
-  fill(204,145,255);
   ellipse(width * 0.5, width * 0.17, width * 0.2, width * 0.011, width * 0.1);
   pop();
 }
